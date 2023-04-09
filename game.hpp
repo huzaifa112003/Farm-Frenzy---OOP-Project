@@ -28,8 +28,6 @@ class Game{
 
     static Game* ptr;
 
-    bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
-
     public:
     bool init();
     bool loadMedia();
