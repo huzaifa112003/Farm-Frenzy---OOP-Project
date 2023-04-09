@@ -122,7 +122,7 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	FarmFrenzyv BattleField(gRenderer, assets);
+	FarmFrenzy BattleField(gRenderer, assets);
 	while( !quit )
 	{
 		//Handle events on queue
