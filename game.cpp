@@ -62,7 +62,7 @@ bool Game::loadMedia()
 	bool success = true;
 	
 	assets = loadTexture("assets.png");
-    gTexture = loadTexture("hu.png");
+    gTexture = loadTexture("start.png");
 	if(assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -122,7 +122,7 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	BattleField BattleField(gRenderer, assets);
+	FarmFrenzy BattleField(gRenderer, assets);
 	while( !quit )
 	{
 		//Handle events on queue
