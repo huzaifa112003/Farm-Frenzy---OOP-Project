@@ -7,7 +7,6 @@
 #include <time.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-#include "FindingNemo.hpp"
 
 
 class Game{
@@ -41,20 +40,8 @@ class Game{
     
     void run();
     
-    bool FirstScreen();
-    bool HardScreen();
-    bool RulesScreen();
-    bool LevelsScreen();
-    bool EasyScreen();
-    bool MediumScreen();
-    bool EndScreen();
-    bool WinningScreen();
-    
-    bool R1();
-    bool R2();
-    bool R3();
-    bool R4();
-    bool R5();
+    bool StartScreen();
+    bool GameScreen();
     
     static Game* getPointer();
     
