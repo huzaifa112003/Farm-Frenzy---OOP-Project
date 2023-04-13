@@ -1,6 +1,8 @@
 #include "game.hpp"
 #include "farmfrenzy.hpp"
 #include<vector>
+
+
 bool Game::init()
 {
 	//Initialization flag
@@ -21,7 +23,7 @@ bool Game::init()
 		}
 
 		//Create window
-		gWindow = SDL_CreateWindow( "HU Mania", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		gWindow = SDL_CreateWindow( "Farm Frenzy", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -114,48 +116,4 @@ SDL_Texture* Game::loadTexture( std::string path )
 	}
 
 	return newTexture;
-}
-
-
-void Game::run( )
-{
-	bool quit = false;
-	SDL_Event e;
-
-	FarmFrenzy BattleField(gRenderer, assets);
-	while( !quit )
-	{
-		//Handle events on queue
-		while( SDL_PollEvent( &e ) != 0 )
-		{
-
-			//User requests quit
-			if( e.type == SDL_QUIT )
-			{
-				quit = true;
-			}
-
-			if(e.type == SDL_MOUSEBUTTONDOWN){
-			//this is a good location to add pigeon in linked list.
-				int xMouse, yMouse;
-				SDL_GetMouseState(&xMouse,&yMouse);
-				BattleField.createObject(xMouse, yMouse);
-			}
-
-			if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_f)
-				BattleField.fire();
-		}
-
-
-		SDL_RenderClear(gRenderer); //removes everything from renderer
-		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
-		//***********************draw the objects here********************
-
-		BattleField.drawObjects();
-		//****************************************************************
-    	SDL_RenderPresent(gRenderer); //displays the updated renderer
-
-	    SDL_Delay(20);	//causes sdl engine to delay for specified miliseconds
-	}
-			
 }
