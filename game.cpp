@@ -117,3 +117,44 @@ SDL_Texture* Game::loadTexture( std::string path )
 
 	return newTexture;
 }
+
+void Game::run( )
+{
+	bool quit = false;;
+	SDL_Event e;
+
+	FarmFrenzy farmfrenzy(gRenderer, assets);
+
+	while( !quit )
+	{
+		//Handle events on queue
+		while( SDL_PollEvent( &e ) != 0 )
+		{
+			//User requests quit
+			if( e.type == SDL_QUIT )
+			{
+				quit = true;
+			}
+
+			if(e.type == SDL_MOUSEBUTTONDOWN){
+			//this is a good location to add pigeon in linked list.
+				int xMouse, yMouse;
+				SDL_GetMouseState(&xMouse,&yMouse);
+				farmfrenzy.createObject(xMouse, yMouse);
+			}
+		}
+
+
+		SDL_RenderClear(gRenderer); //removes everything from renderer
+		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
+		//***********************draw the objects here********************
+
+		farmfrenzy.drawObjects();
+
+		//****************************************************************
+    	SDL_RenderPresent(gRenderer); //displays the updated renderer
+
+	    SDL_Delay(100);	//causes sdl engine to delay for specified miliseconds
+	}
+			
+}
