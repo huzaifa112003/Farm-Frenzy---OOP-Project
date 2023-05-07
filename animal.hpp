@@ -10,4 +10,5 @@ public:
     //Animal();
     // virtual void draw(SDL_Rect* srcRect, SDL_Rect* moverRect)=0;
     virtual void move() = 0;
+    virtual void createProduct(SDL_Renderer* rend, SDL_Texture* texture)=0;
 };

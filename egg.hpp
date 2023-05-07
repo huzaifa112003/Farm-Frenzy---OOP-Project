@@ -1,6 +1,9 @@
 #include<SDL.h>
 #include "food.hpp"
 
+#ifndef UNIT
+#define UNIT
+
 class egg: public food{
 SDL_Rect srcRect, moverRect;
 
@@ -13,3 +16,4 @@ public:
     // Pig(); //default constructor
     // Pig(int, int); // may add other overloaded constructors here... 
     };
+#endif

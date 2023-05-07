@@ -7,6 +7,8 @@
 #include<vector>
 #include<list>
 using namespace std;
+#include <chrono>
+#include <thread>
 
 
 class farmfrenzy{
@@ -23,7 +25,7 @@ class farmfrenzy{
     // vector<Pig*> pigs;
     vector<Animal*> animals;
     vector<food*> products;
-
+    std::chrono::time_point<std::chrono::system_clock> last_product_time;
     public:
     farmfrenzy(SDL_Renderer *, SDL_Texture *, int, int);
     void drawObjects(); 
