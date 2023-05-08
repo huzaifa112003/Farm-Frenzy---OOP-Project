@@ -24,27 +24,6 @@ void farmfrenzy::drawObjects(){
         }
     }
 }
-// void farmfrenzy::drawObjects(){
-    
-//     // call draw functions of all the objects here
-//     for (int i = 0; i < animals.size(); i++) {
-//         animals[i] -> draw(gRenderer, assets);
-//         //int startTime=SDL_GetTicks()/1000;
-//         //cout<<"get ticks is "<<startTime<<endl;
-//         animals[i] -> move();
-//         //if(startTime>10){
-//             //cout<<"get ticks is haahahahhaha "<<startTime<<endl;
-//             //delay(5);
-            
-//             animals[i]-> createProduct(gRenderer,assets);
-            
-//         //}
-        
-//         //products[i]->draw(gRenderer, assets);
-//     }
-    
-// }
-
 
 void farmfrenzy::createObject(int x, int y){
     
