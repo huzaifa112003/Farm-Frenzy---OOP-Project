@@ -91,3 +91,23 @@ void farmfrenzy::drawProducts(){
         eggs[i]->draw(gRenderer, assets);
     }
 }
+
+void farmfrenzy::removeEgg(int x, int y){
+    std::cout << "removeEgg called with x = " << x << " and y = " << y << std::endl;
+    // iterate over all the eggs
+    for (int i = 0; i < eggs.size(); i++) {
+        // get the position and size of the egg
+        int egg_x = eggs[i]->getX();
+        int egg_y = eggs[i]->getY();
+        int egg_w = eggs[i]->getWidth();
+        int egg_h = eggs[i]->getHeight();
+        
+        // check if the mouse click is inside the egg
+        if (x >= egg_x && x <= egg_x + egg_w && y >= egg_y && y <= egg_y + egg_h) {
+            // remove the egg from the vector and delete it from memory
+            delete eggs[i];
+            eggs.erase(eggs.begin() + i);
+            break; // break out of the loop after removing the egg
+        }
+    }
+}

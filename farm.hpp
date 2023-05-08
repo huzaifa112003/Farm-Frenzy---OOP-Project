@@ -32,5 +32,6 @@ class farmfrenzy{
     void drawObjects(); 
     void createObject(int, int);
     void drawProducts();
+    void removeEgg(int x, int y);
 
 };
