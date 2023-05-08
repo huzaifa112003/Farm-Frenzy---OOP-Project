@@ -6,7 +6,7 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL_mixer.h>
 
 
 
