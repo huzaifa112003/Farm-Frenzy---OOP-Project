@@ -149,7 +149,7 @@ void Game::run( )
 		//***********************draw the objects here********************
 
 		farmfrenzyy.drawObjects();
-
+		farmfrenzyy.drawProducts();
 		//****************************************************************
     	SDL_RenderPresent(gRenderer); //displays the updated renderer
 

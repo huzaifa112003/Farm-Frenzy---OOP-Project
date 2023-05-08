@@ -17,6 +17,6 @@ public:
     int animation = 0; // controls animation
     //sheep(); //default constructor
     sheep(SDL_Renderer*, SDL_Texture*, int, int); // may add other overloaded constructors here...  
-    void createProduct(SDL_Renderer* rend, SDL_Texture* texture);
+    food* createProduct(SDL_Renderer* rend, SDL_Texture* texture);
 };
 

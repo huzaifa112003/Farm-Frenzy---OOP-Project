@@ -14,9 +14,12 @@ void farmfrenzy::drawObjects(){
         
         // check if it's time to create an egg for this sheep
         int currentTime = SDL_GetTicks() / 1000;
-        if (currentTime - lastEggTime >= 5) {
+        int secs= 7+ rand()%35;
+        if (currentTime - lastEggTime >= secs) {
             // create an egg for this sheep
-            animals[i]->createProduct(gRenderer, assets);
+            //animals[i]->createProduct(gRenderer, assets);
+            food* egg = animals[i]->createProduct(gRenderer, assets);
+            eggs.push_back(egg);
             lastEggTime = currentTime;
         }
     }
@@ -82,3 +85,9 @@ farmfrenzy::farmfrenzy(SDL_Renderer *renderer, SDL_Texture *asset, int x, int y)
         assets(asset){ 
             last_product_time = std::chrono::system_clock::now();
             }
+
+void farmfrenzy::drawProducts(){
+    for (int i = 0; i < eggs.size(); i++) {
+        eggs[i]->draw(gRenderer, assets);
+    }
+}

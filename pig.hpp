@@ -15,6 +15,6 @@ public:
     // Pig(); //default constructor
     // Pig(int, int); // may add other overloaded constructors here... 
     Pig(SDL_Renderer*, SDL_Texture*, int, int);
-    void createProduct(SDL_Renderer* rend, SDL_Texture* texture);
+    food* createProduct(SDL_Renderer* rend, SDL_Texture* texture);
 };
 

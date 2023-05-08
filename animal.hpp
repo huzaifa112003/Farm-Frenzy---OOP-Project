@@ -1,5 +1,6 @@
 #include<SDL.h>
 #pragma once
+#include "food.hpp"
 
 class Animal{
     SDL_Renderer* gRenderer;
@@ -10,5 +11,5 @@ public:
     //Animal();
     // virtual void draw(SDL_Rect* srcRect, SDL_Rect* moverRect)=0;
     virtual void move() = 0;
-    virtual void createProduct(SDL_Renderer* rend, SDL_Texture* texture)=0;
+    virtual food* createProduct(SDL_Renderer* rend, SDL_Texture* texture)=0;
 };

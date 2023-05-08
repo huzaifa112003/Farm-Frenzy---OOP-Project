@@ -70,10 +70,10 @@ void sheep :: move(){
 
 const int SCREEN_HEIGHT = 600;
 
-void sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
+food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
     //anda= new egg(rend, texture ,x, y);
     
-    anda->draw(rend, texture);
+    return new egg(rend, texture,moverRect.x,moverRect.y);
 }
 
 

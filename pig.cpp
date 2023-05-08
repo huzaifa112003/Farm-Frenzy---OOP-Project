@@ -82,9 +82,10 @@ const int SCREEN_HEIGHT = 600;
 // }
 
 
-void Pig::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
+food* Pig::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
     
-    anda->draw(rend, texture);
+    return new egg(rend, texture, moverRect.x, moverRect.y);
+    //anda->draw(rend, texture);
 }
 
 
