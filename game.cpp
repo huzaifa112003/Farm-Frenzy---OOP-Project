@@ -1,5 +1,12 @@
 #include "game.hpp"
 #include "farm.hpp"
+#include <vector>
+#include <time.h>
+#include <iostream>
+#include <chrono>
+#include <unistd.h>
+#include <ctime>
+#include<string>
 bool Game::init()
 {
 	//Initialization flag
@@ -67,6 +74,13 @@ bool Game::loadMedia()
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
+	gMusic = Mix_LoadMUS("bgm.mp3");
+	if (gMusic == NULL)
+	{
+		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		success = false;
+	}
+
 	return success;
 }
 
