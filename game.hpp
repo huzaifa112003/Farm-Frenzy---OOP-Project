@@ -6,6 +6,9 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
+#include <SDL_mixer.h>
+
+
 
 class Game{
     //Screen dimension constants
@@ -23,7 +26,11 @@ class Game{
     //global reference to png image sheets
     SDL_Texture* assets=NULL;
     //SDL_Texture* assets_for_egg=NULL;
+    Mix_Music *gMusic = NULL;
+
+
     
+
 
 public:
 
