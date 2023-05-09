@@ -109,6 +109,20 @@ bool Game::startscreen()
 	return success;
 }
 
+bool Game::infoscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 2;
+    gTexture = loadTexture("infoscreen.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
 bool Game::levelscreen()
 {
 	//Loading success flag
@@ -207,8 +221,12 @@ void Game::run( )
 			//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				if((xMouse>=50 && xMouse<=700) && (yMouse>=100 && yMouse<=500) && (screen==1)){
+				if((xMouse>=298 && xMouse<=700) && (yMouse>=396 && yMouse<=490) && (screen==1)){
 					levelscreen();
+				}
+
+				else if((xMouse>=15 && xMouse<=80) && (yMouse>=30 && yMouse<=91) && (screen==1)){
+					infoscreen();
 				}
 
 				else if((xMouse>=50 && xMouse<=700) && (yMouse>=100 && yMouse<=490) && (screen==3)){
