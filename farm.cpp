@@ -32,14 +32,25 @@ void farmfrenzy::createObject(int x, int y){
     if((x>=0 && x<=46) && (y>=0 && y<=52)){ //when the player will buy a sheep
         
         
+        // int xx= 152+ rand()%800;
+        // x=xx;
+        // int yy= 124+ rand()%392;
+        // y=yy;
+        // if((y>125 && y<370) && (x>142 && x<812)){ // condition that makes sure animals only appear in the farm area.
+        //     Animal* sheepu = new sheep(gRenderer, assets, x, y); // sheep is drawn. Thus sheep vector assigned to the structure object.
+        //     //sheepu->createProduct(gRenderer, assets);
+        //     animals.push_back(sheepu); // pushed back into vector     
+        // }
+        // std::cout<<"Mouse clicked at: "<<x<<" -- "<<y<<std::endl;
+
         int xx= 152+ rand()%800;
         x=xx;
         int yy= 124+ rand()%392;
         y=yy;
         if((y>125 && y<370) && (x>142 && x<812)){ // condition that makes sure animals only appear in the farm area.
-            Animal* sheepu = new sheep(gRenderer, assets, x, y); // sheep is drawn. Thus sheep vector assigned to the structure object.
+            Animal* gaye = new cow(gRenderer, assets, x, y); // sheep is drawn. Thus sheep vector assigned to the structure object.
             //sheepu->createProduct(gRenderer, assets);
-            animals.push_back(sheepu); // pushed back into vector     
+            animals.push_back(gaye); // pushed back into vector     
         }
         std::cout<<"Mouse clicked at: "<<x<<" -- "<<y<<std::endl;
     }

@@ -4,6 +4,11 @@
 // #include "animal.hpp"
 // #include "food.hpp"
 #include "egg.hpp"
+#include "milk.hpp"
+#include "meat.hpp"
+#include "wool.hpp"
+#include "cow.hpp"
+#include "chicken.hpp"
 #include<vector>
 #include<list>
 using namespace std;

@@ -1,6 +1,6 @@
 #include<SDL.h>
 #include "animal.hpp"
-#include "egg.hpp"
+#include "wool.hpp"
 #include "food.hpp"
 #include <windows.h>
 // sheep implementation will go here.
@@ -10,7 +10,7 @@ SDL_Rect srcRect, moverRect;
 
 
 public:
-    egg* anda;
+    food* rui;
     void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of sheep
     void move(); //move function
     bool flag = true; //flag helps in making condition for sheep
