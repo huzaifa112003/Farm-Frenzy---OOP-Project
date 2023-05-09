@@ -163,7 +163,13 @@ void Game::run( )
 		//***********************draw the objects here********************
 
 		farmfrenzyy.drawObjects();
-
+		farmfrenzyy.drawProducts();
+		if (e.type == SDL_MOUSEBUTTONDOWN) {
+			int x, y;
+			SDL_GetMouseState(&x, &y);
+			std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+			farmfrenzyy.removeEgg(x, y);
+		}
 		//****************************************************************
     	SDL_RenderPresent(gRenderer); //displays the updated renderer
 

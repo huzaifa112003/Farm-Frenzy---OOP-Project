@@ -1,9 +1,11 @@
 #include "sheep.hpp"
+
 // sheep implementation will go here.
 
 void sheep::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
     SDL_RenderCopy(gRenderer, assets, &srcRect, &moverRect);
 }
+
 
 void sheep :: move(){
     
@@ -68,11 +70,19 @@ void sheep :: move(){
 
 const int SCREEN_HEIGHT = 600;
 
+food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
+    //anda= new egg(rend, texture ,x, y);
+    
+    return new egg(rend, texture,moverRect.x,moverRect.y);
+}
+
+
 sheep::sheep(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   Animal(rend, texture) { // overloaded constructor
     srcRect = {557, 1457, 49, 39};
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-}
+    anda= new egg(rend, texture ,moverRect.x, moverRect.y);
+}  
 
 
 

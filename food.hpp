@@ -10,4 +10,8 @@ public:
     //Animal();
     // virtual void draw(SDL_Rect* srcRect, SDL_Rect* moverRect)=0;
     //virtual void move() = 0;
+    virtual int getX() const=0;
+    virtual int getY() const=0;
+    virtual int getWidth() const=0;
+    virtual int getHeight() const=0;
 };

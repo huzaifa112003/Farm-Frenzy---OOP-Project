@@ -81,10 +81,19 @@ const int SCREEN_HEIGHT = 600;
 //     moverRect = {x, y, 50, 60}; // Pig drawn at x,y co=ordinates
 // }
 
+
+food* Pig::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
+    
+    return new egg(rend, texture, moverRect.x, moverRect.y);
+    //anda->draw(rend, texture);
+}
+
+
 Pig::Pig(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   Animal(rend, texture) { // overloaded constructor
     srcRect = {1068, 953, 55, 30};
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
+    anda= new egg(rend, texture ,x, y);
 }
 
 
