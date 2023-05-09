@@ -1,7 +1,5 @@
 #include "sheep.hpp"
 
-// sheep implementation will go here.
-
 void sheep::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
     SDL_RenderCopy(gRenderer, assets, &srcRect, &moverRect);
 }
@@ -58,7 +56,6 @@ void sheep :: move(){
             srcRect={553,1202,49,38};// reverse move down left
             animation = 0; // move back to first animation
         }  
-        moverRect.x -= 5; // move sheep 20 pixels etc as indicated
 
         if(moverRect.x>=135){ // if sheep has not reached the right corner x plus 20
             moverRect.x -= 5;
@@ -73,17 +70,16 @@ void sheep :: move(){
 const int SCREEN_HEIGHT = 600;
 
 food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
-    //anda= new egg(rend, texture ,x, y);
     
     return new wool(rend, texture,moverRect.x,moverRect.y);
 }
 
 
 sheep::sheep(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
-  Animal(rend, texture) { // overloaded constructor
+  Animal(rend, texture) { // constructor
     srcRect={558,1458,49,38}; 
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-    //rui= new wool(rend, texture ,moverRect.x, moverRect.y);
+    
 }  
 
 

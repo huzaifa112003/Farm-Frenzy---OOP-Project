@@ -1,21 +1,16 @@
 #include<SDL.h>
 #include "animal.hpp"
 #include "egg.hpp"
-#include "food.hpp"
-#include <windows.h>
-// sheep implementation will go here.
-#include <time.h>
-class chicken: public Animal{
-SDL_Rect srcRect, moverRect;
 
+
+class chicken: public Animal{ //chicken class is inherited from the animal class
+SDL_Rect srcRect, moverRect; // private members: it's source rect where the initial position of the Chicken is generated in the constructor.
 
 public:
-    //food* anda;
-    void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of sheep
+    void draw(SDL_Renderer*, SDL_Texture* assets); //draw function for chicken
     void move(); //move function
-    bool flag = true; //flag helps in making condition for sheep
+    bool flag = true; //flag helps in making condition for chicken
     int animation = 0; // controls animation
-    //sheep(); //default constructor
-    chicken(SDL_Renderer*, SDL_Texture*, int, int); // may add other overloaded constructors here...  
-    food* createProduct(SDL_Renderer* rend, SDL_Texture* texture);
+    chicken(SDL_Renderer*, SDL_Texture*, int, int); //constructor for chicken with 4 parameters.
+    food* createProduct(SDL_Renderer* rend, SDL_Texture* texture); //a create product for chicken that will return a food pointer
 };

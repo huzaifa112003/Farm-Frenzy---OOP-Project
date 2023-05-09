@@ -1,5 +1,4 @@
 #include "pig.hpp"
-// Pig implementation will go here.
 
 void Pig::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
     SDL_RenderCopy(gRenderer, assets, &srcRect, &moverRect);
@@ -53,7 +52,6 @@ void Pig :: move(){
              srcRect={1064,698,55,30};// reverse move down left
             animation = 0; // move back to first animation
         }  
-        moverRect.x -= 5; // move Pig 20 pixels etc as indicated
 
         if(moverRect.x>=135){ // if sheep has not reached the right corner x plus 20
             moverRect.x -= 5;
@@ -65,35 +63,18 @@ void Pig :: move(){
 }
 
 
-const int SCREEN_HEIGHT = 600;
-
-// Pig::Pig(){
-//     // src coorinates from assets.png file, they have been found using spritecow.com
-//     srcRect = {1068, 953, 55, 30};
-//     // it will display Pig on x = 30, y = 40 location, the size of Pig is 50 width, 60 height
-//     moverRect = {40, SCREEN_HEIGHT - 200, 50, 60};
-// }
-
-
-
-// Pig::Pig(int x, int y) { // overloaded constructor
-//     srcRect = {1068, 953, 55, 30};
-//     moverRect = {x, y, 50, 60}; // Pig drawn at x,y co=ordinates
-// }
-
 
 food* Pig::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
     
     return new meat(rend, texture, moverRect.x, moverRect.y);
-    //anda->draw(rend, texture);
 }
 
 
 Pig::Pig(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
-  Animal(rend, texture) { // overloaded constructor
+  Animal(rend, texture) { // constructor
     srcRect={1069,954,55,30};
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-    //bacon= new meat(rend, texture ,x, y);
+    
 }
 
 

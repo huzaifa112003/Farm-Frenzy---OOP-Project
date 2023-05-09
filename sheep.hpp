@@ -1,10 +1,8 @@
 #include<SDL.h>
 #include "animal.hpp"
 #include "wool.hpp"
-#include "food.hpp"
-#include <windows.h>
-// sheep implementation will go here.
-#include <time.h>
+
+
 class sheep: public Animal{
 SDL_Rect srcRect, moverRect;
 

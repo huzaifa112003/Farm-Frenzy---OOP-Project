@@ -8,11 +8,11 @@ class egg: public food{
 SDL_Rect srcRect, moverRect;
 
 public:
-    void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of pigeon
-    egg(SDL_Renderer*, SDL_Texture*, int, int);
-    int getX() const;
-    int getY() const;
-    int getWidth() const;
-    int getHeight() const;
+    void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of egg
+    egg(SDL_Renderer*, SDL_Texture*, int, int); //constructor
+    int getX() const; // //getter function for x coordinate of egg.
+    int getY() const; //getter function for y coordinate of egg.
+    int getWidth() const; //getter function for width of egg.
+    int getHeight() const; //getter function for height of egg.
     };
 #endif
