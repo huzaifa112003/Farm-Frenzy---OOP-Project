@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 
 
 
@@ -39,5 +40,6 @@ public:
     void close();
     SDL_Texture* loadTexture( std::string path );
     void run();
+    void show_time(int);
 };
 
