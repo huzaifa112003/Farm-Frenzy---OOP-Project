@@ -44,6 +44,7 @@ public:
 
     //all the screens
     bool startscreen();
+    bool infoscreen();
     bool levelscreen();
     bool easyscreen();
     bool mediumscreen();

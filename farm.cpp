@@ -99,5 +99,5 @@ void farmfrenzy::removeEgg(int x, int y){
             eggs.erase(eggs.begin() + i);
             break; // break out of the loop after removing the egg
         }
-    }
+    }//
 }
