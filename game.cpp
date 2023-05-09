@@ -253,23 +253,28 @@ void Game::run( )
 		// farmfrenzyy.drawObjects();
 		// farmfrenzyy.drawProducts();
 		if(screen==4){
-			// ff->drawObjects();
-			// ff->drawProducts();
-			int xMouse, yMouse;
-			SDL_GetMouseState(&xMouse,&yMouse);
-			ff->createChicken(xMouse, yMouse);
-			ff->createPig(xMouse, yMouse);
 			ff->drawObjects();
 			ff->drawProducts();
+			int xMouse, yMouse;
+			SDL_GetMouseState(&xMouse,&yMouse);
+			// ff->createChicken(xMouse, yMouse);
+			// ff->createPig(xMouse, yMouse);
+			// ff->drawObjects();
+			// ff->drawProducts();
 			// ff->createCow(xMouse, yMouse);
 			// ff->createSheep(xMouse, yMouse);
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
+				ff->createChicken(xMouse, yMouse);
+				ff->createPig(xMouse, yMouse);
 				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 				ff->removeProduct(x, y);
 			}
+
+
+
 		}
 
 		// if (e.type == SDL_MOUSEBUTTONDOWN) {
