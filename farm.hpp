@@ -4,6 +4,12 @@
 // #include "animal.hpp"
 // #include "food.hpp"
 #include "egg.hpp"
+#include "chicken.hpp"
+#include "milk.hpp"
+#include "cow.hpp"
+#include "meat.hpp"
+#include "wool.hpp"
+
 #include<vector>
 #include<list>
 using namespace std;
@@ -28,6 +34,7 @@ class farmfrenzy{
     vector<food*> products;
     std::chrono::time_point<std::chrono::system_clock> last_product_time;
     public:
+    farmfrenzy();
     farmfrenzy(SDL_Renderer *, SDL_Texture *, int, int);
     void drawObjects(); 
     void createObject(int, int);

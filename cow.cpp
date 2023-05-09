@@ -1,13 +1,13 @@
-#include "sheep.hpp"
+#include "cow.hpp"
 
 // sheep implementation will go here.
 
-void sheep::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
+void cow::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
     SDL_RenderCopy(gRenderer, assets, &srcRect, &moverRect);
 }
 
 
-void sheep :: move(){
+void cow :: move(){
     
     if (flag == true) {
         if (animation == 0) { // if first animation
@@ -70,18 +70,18 @@ void sheep :: move(){
 
 const int SCREEN_HEIGHT = 600;
 
-food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
+food* cow::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
     //anda= new egg(rend, texture ,x, y);
     
-    return new wool(rend, texture,moverRect.x,moverRect.y);
+    return new milk(rend, texture,moverRect.x,moverRect.y);
 }
 
 
-sheep::sheep(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
+cow::cow(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   Animal(rend, texture) { // overloaded constructor
     srcRect = {557, 1457, 49, 39};
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-    rui = new wool(rend, texture ,moverRect.x, moverRect.y);
+    doodh= new milk(rend, texture ,moverRect.x, moverRect.y);
 }  
 
 
