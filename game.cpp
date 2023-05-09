@@ -7,6 +7,11 @@
 #include <unistd.h>
 #include <ctime>
 #include<string>
+
+
+// static int screen;
+
+
 bool Game::init()
 {
 	//Initialization flag
@@ -54,6 +59,11 @@ bool Game::init()
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
 				}
+				if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+				{
+					printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+					success = false;
+				}
 
 			}
 		}
@@ -66,23 +76,70 @@ bool Game::loadMedia()
 {
 	//Loading success flag
 	bool success = true;
+	screen = 1;
 	assets = loadTexture("assets.png");
 	//assets_for_egg =loadTexture("egg.png");
-    gTexture = loadTexture("StartScreen.jpeg");
+    gTexture = loadTexture("startscreen.png");
 	if(assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
-	// gMusic = Mix_LoadMUS("bgm.mp3");
-	// if (gMusic == NULL)
-	// {
-	// 	printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-	// 	success = false;
-	// }
+	gMusic = Mix_LoadMUS("bgm.mp3");
+	if (gMusic == NULL)
+	{
+		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		success = false;
+	}
 
 	return success;
 }
+
+bool Game::startscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 1;
+    gTexture = loadTexture("startscreen.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+bool Game::levelscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 3;
+    gTexture = loadTexture("levelscreen.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+bool Game::easyscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 4;
+    gTexture = loadTexture("start.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+
+
+
 
 void Game::close()
 {
@@ -132,7 +189,8 @@ void Game::run( )
 	bool quit = false;;
 	SDL_Event e;
 
-	farmfrenzy farmfrenzyy(gRenderer, assets, 100, 100);
+	//farmfrenzy farmfrenzyy(gRenderer, assets, 100, 100);
+	farmfrenzy *ff = new farmfrenzy(gRenderer, assets, 100, 100); 
 
 	while( !quit )
 	{
@@ -149,11 +207,20 @@ void Game::run( )
 			//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				if((xMouse>=291 && xMouse<=468) && (yMouse>=248 && yMouse<=299)){
-					gTexture = loadTexture("start.png");
+				if((xMouse>=50 && xMouse<=700) && (yMouse>=100 && yMouse<=500) && (screen==1)){
+					levelscreen();
 				}
+
+				else if((xMouse>=50 && xMouse<=700) && (yMouse>=100 && yMouse<=490) && (screen==3)){
+					easyscreen();
+				}
+
 				SDL_GetMouseState(&xMouse,&yMouse);
-				farmfrenzyy.createObject(xMouse, yMouse);
+				ff->createObject(xMouse, yMouse);
+			}
+			if (Mix_PlayingMusic() == 0)
+			{
+				Mix_PlayMusic(gMusic, 2);
 			}
 		}
 
@@ -162,14 +229,27 @@ void Game::run( )
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
 
-		farmfrenzyy.drawObjects();
-		farmfrenzyy.drawProducts();
-		if (e.type == SDL_MOUSEBUTTONDOWN) {
-			int x, y;
-			SDL_GetMouseState(&x, &y);
-			std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
-			farmfrenzyy.removeEgg(x, y);
+		// farmfrenzyy.drawObjects();
+		// farmfrenzyy.drawProducts();
+		if(screen==4){
+			ff->drawObjects();
+			ff->drawProducts();
+			
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int x, y;
+				SDL_GetMouseState(&x, &y);
+				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+				ff->removeEgg(x, y);
+			}
 		}
+
+		// if (e.type == SDL_MOUSEBUTTONDOWN) {
+		// 	int x, y;
+		// 	SDL_GetMouseState(&x, &y);
+		// 	std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+		// 	ff->removeEgg(x, y);
+		// }
+
 		//****************************************************************
     	SDL_RenderPresent(gRenderer); //displays the updated renderer
 
