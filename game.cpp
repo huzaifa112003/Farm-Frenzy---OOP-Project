@@ -7,33 +7,6 @@
 #include <unistd.h>
 #include <ctime>
 #include<string>
-#include<SDL_ttf.h>
-
-using namespace std;
-using namespace std::chrono;
-
-// Game *Game::ptr = NULL;
-
-// SDL_Renderer *Drawing::gRenderer = NULL;
-// SDL_Renderer *Drawing::hRenderer = NULL;
-// SDL_Texture *Drawing::assets = NULL;
-
-
-void Game::show_time(int t){
-	TTF_Init(); //Initializes SDL_TTF for displaying text in 
-    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
-    SDL_Color color = {0, 0, 0}; //This is the texts color that can be changed using RGB values from 0 to 255.
-    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
-    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
-    SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfacemessage); //Converts into texture that can be displayed
-    SDL_Rect Message_rect = {800, 30, 90, 30}; //create a rect for it
-    SDL_RenderCopy(gRenderer, Message, NULL, &Message_rect);
-    SDL_FreeSurface(surfacemessage);
-    // SDL_DestroyTexture(Message);
-    // TTF_CloseFont(font);
-    // TTF_Quit();
-}
-
 bool Game::init()
 {
 	//Initialization flag
@@ -95,7 +68,7 @@ bool Game::loadMedia()
 	bool success = true;
 	assets = loadTexture("assets.png");
 	//assets_for_egg =loadTexture("egg.png");
-    gTexture = loadTexture("startscreen.png");
+    gTexture = loadTexture("StartScreen.jpeg");
 	if(assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -160,7 +133,6 @@ void Game::run( )
 	SDL_Event e;
 
 	farmfrenzy farmfrenzyy(gRenderer, assets, 100, 100);
-	auto start = high_resolution_clock::now();
 
 	while( !quit )
 	{
@@ -177,13 +149,9 @@ void Game::run( )
 			//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				if((xMouse>=298 && xMouse<=700) && (yMouse>=396 && yMouse<=490)){
+				if((xMouse>=291 && xMouse<=468) && (yMouse>=248 && yMouse<=299)){
 					gTexture = loadTexture("start.png");
-						
-
-				// if((xMouse>=15 && xMouse<=80) && (yMouse>=30 && yMouse<=91)){
-				// 	gTexture = loadTexture("instruction.png");
-				// }
+				}
 				SDL_GetMouseState(&xMouse,&yMouse);
 				farmfrenzyy.createObject(xMouse, yMouse);
 			}
@@ -196,14 +164,6 @@ void Game::run( )
 
 		farmfrenzyy.drawObjects();
 		farmfrenzyy.drawProducts();
-		auto stop = high_resolution_clock::now();
-		auto duration = duration_cast<seconds>(stop - start);
-		// time_left = time_left - duration.count();
-		cout << "time: " << duration.count() << endl;
-		int t = 185 - duration.count();
-		cout << "You have " << t << " seconds left\n";
-		show_time(t);
-				// }
 		if (e.type == SDL_MOUSEBUTTONDOWN) {
 			int x, y;
 			SDL_GetMouseState(&x, &y);
@@ -215,6 +175,5 @@ void Game::run( )
 
 	    SDL_Delay(100);	//causes sdl engine to delay for specified miliseconds
 	}
-	
-	}
-			}
+			
+}
