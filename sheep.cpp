@@ -11,20 +11,21 @@ void sheep :: move(){
     
     if (flag == true) {
         if (animation == 0) { // if first animation
-            srcRect = {557, 1457, 49, 39}; // move up right
+             srcRect={558,1458,49,38};// move right
             animation = 1; // next animation
         } 
         else if (animation == 1) { // if middle animation 
-            srcRect = {685, 1456, 49, 39}; // move middle right coordinates
+            srcRect={686,1457,49,39};
+            // move middle right coordinates
             animation = 2; // next animation
         }
         else if (animation == 2) { // if last animation
-            srcRect = {813, 1457, 49, 39}; // move down right 
+             srcRect={814,1458,49,39};// move down right 
             animation = 3; // move back to first animation
         } 
 
         else if (animation == 3) { // if last animation
-            srcRect = {941, 1456, 49, 39}; // move down right 
+            srcRect={942,1457,49,39}; // move down right 
             animation = 0; // move back to first animation
         }
         
@@ -41,19 +42,20 @@ void sheep :: move(){
 
     else{ // whole condition runs if the flag is false when sheep reaches right corner. it brings the sheep back to left
         if (animation == 0) { // if first animation
-            srcRect = {552, 1201, 49, 39}; // reverse move up left
+            //  move left
+            srcRect={937,1201,49,39};
             animation = 1; // next animation
         } 
         else if (animation == 1) { // if middle animation
-            srcRect = {680, 1200, 49, 39}; // reverse move middle
+             srcRect={809,1202,49,39}; // reverse move middle
             animation = 2; // next animation
         }
         else if (animation == 2) { // if last animation
-            srcRect = {808, 1201, 49, 39}; // reverse move down left
+             srcRect={681,1201,49,39};// reverse move down left
             animation = 3; // move back to first animation
         }
         else if (animation == 3) { // if last animation
-            srcRect = {936, 1200, 49, 39}; // reverse move down left
+            srcRect={553,1202,49,38};// reverse move down left
             animation = 0; // move back to first animation
         }  
         moverRect.x -= 5; // move sheep 20 pixels etc as indicated
@@ -79,9 +81,9 @@ food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
 
 sheep::sheep(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   Animal(rend, texture) { // overloaded constructor
-    srcRect = {557, 1457, 49, 39};
+    srcRect={558,1458,49,38}; 
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-    rui= new wool(rend, texture ,moverRect.x, moverRect.y);
+    //rui= new wool(rend, texture ,moverRect.x, moverRect.y);
 }  
 
 

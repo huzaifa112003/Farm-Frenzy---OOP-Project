@@ -10,7 +10,7 @@ SDL_Rect srcRect, moverRect;
 
 
 public:
-    food* rui;
+    //food* rui;
     void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of sheep
     void move(); //move function
     bool flag = true; //flag helps in making condition for sheep

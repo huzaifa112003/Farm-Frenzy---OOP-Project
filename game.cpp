@@ -234,7 +234,10 @@ void Game::run( )
 				}
 
 				SDL_GetMouseState(&xMouse,&yMouse);
-				ff->createObject(xMouse, yMouse);
+				ff->createChicken(xMouse, yMouse);
+				ff->createPig(xMouse, yMouse);
+				ff->createCow(xMouse, yMouse);
+				ff->createSheep(xMouse, yMouse);
 			}
 			if (Mix_PlayingMusic() == 0)
 			{
@@ -257,7 +260,7 @@ void Game::run( )
 				int x, y;
 				SDL_GetMouseState(&x, &y);
 				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
-				ff->removeEgg(x, y);
+				ff->removeProduct(x, y);
 			}
 		}
 

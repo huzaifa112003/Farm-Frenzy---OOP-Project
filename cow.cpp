@@ -45,22 +45,22 @@ void cow :: move(){
 
     else{ // whole condition runs if the flag is false when sheep reaches right corner. it brings the sheep back to left
         if (animation == 0) { // if first animation
-            //srcRect = {552, 1201, 49, 39}; // reverse move up left
+             // reverse move up left
             srcRect={1180,174,71,43};
             animation = 1; // next animation
         } 
         else if (animation == 1) { // if middle animation
-            //srcRect = {680, 1200, 49, 39}; // reverse move middle
+             // reverse move middle
             srcRect={1052,175,71,44};
             animation = 2; // next animation
         }
         else if (animation == 2) { // if last animation
-            //srcRect = {808, 1201, 49, 39}; // reverse move down left
+             // reverse move down left
             srcRect={924,174,71,44};
             animation = 3; // move back to first animation
         }
         else if (animation == 3) { // if last animation
-            //srcRect = {936, 1200, 49, 39}; // reverse move down left
+             // reverse move down left
             srcRect={796,175,71,44};
             animation = 0; // move back to first animation
         }  
@@ -89,7 +89,7 @@ cow::cow(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   Animal(rend, texture) { // overloaded constructor
     srcRect={812,431,71,44};
     moverRect = {x, y, 50, 60}; // sheep drawn at x,y co=ordinates
-    doodh= new milk(rend, texture ,moverRect.x, moverRect.y);
+    //doodh= new milk(rend, texture ,moverRect.x, moverRect.y);
 }  
 
 

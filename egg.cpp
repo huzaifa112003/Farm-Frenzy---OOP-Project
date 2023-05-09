@@ -11,7 +11,7 @@ egg::egg(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
     //srcRect = {557, 1457, 49, 39};
     srcRect={22,1558,89,107};
     //srcRect = {0, 2, 218, 212};
-    moverRect = {x, y, 30, 40}; // egg drawn at x,y coordinates
+    moverRect = {x, y, 20, 30}; // egg drawn at x,y coordinates
 }
 int egg::getX() const {
     return moverRect.x;
