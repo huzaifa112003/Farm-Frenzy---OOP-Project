@@ -32,9 +32,9 @@ void farmfrenzy::createObject(int x, int y){
     if((x>=0 && x<=46) && (y>=0 && y<=52)){ //when the player will buy a sheep
         
         
-        int xx= 152 + rand()%630;
+        int xx= 152+ rand()%800;
         x=xx;
-        int yy= 125 + rand()%200;
+        int yy= 124+ rand()%392;
         y=yy;
         if((y>125 && y<370) && (x>142 && x<812)){ // condition that makes sure animals only appear in the farm area.
             Animal* sheepu = new sheep(gRenderer, assets, x, y); // sheep is drawn. Thus sheep vector assigned to the structure object.
@@ -46,11 +46,11 @@ void farmfrenzy::createObject(int x, int y){
 
     else if((x>=50 && x<=94) && (y>=3 && y<=52)){ //when the player buys a pig
         //do {
-        int xx= 152 + rand()%630;
+        int xx= 152+ rand()%630;
         x=xx;
-        int yy= 125 + rand()%200;
+        int yy= 124+ rand()%200;
         y=yy;//}while(!(y>115 && y<350) && !(x>142 && x<812));
-        if((y>125 && y<350) && (x>152 && x<800)){
+        if((y>125 && y<350) && (x>142 && x<812)){
             Animal *piggy = new Pig(gRenderer, assets, x, y); // sheep is drawn. Thus animal vector assigned to the structure object.
             animals.push_back(piggy); // pushed back into vector 
         }  

@@ -1,13 +1,13 @@
 #include<SDL.h>
 #include "animal.hpp"
-#include "meat.hpp"
+#include "egg.hpp"
 #include "food.hpp"
 
 class Pig: public Animal{
 SDL_Rect srcRect, moverRect;
 
 public:
-    food* bacon;
+    food* anda;
     void draw(SDL_Renderer*, SDL_Texture* assets); //draw function of pigeon
     void move(); //move function
     bool flag = true; //flag helps in making condition for pigeon

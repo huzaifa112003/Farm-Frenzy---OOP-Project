@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <ctime>
 #include<string>
-#include<SDL_ttf.h>
+
 
 // static int screen;
 
