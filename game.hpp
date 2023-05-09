@@ -27,6 +27,7 @@ class Game{
     SDL_Texture* assets=NULL;
     //SDL_Texture* assets_for_egg=NULL;
     Mix_Music *gMusic = NULL;
+    int screen;
 
 
     
@@ -39,5 +40,14 @@ public:
     void close();
     SDL_Texture* loadTexture( std::string path );
     void run();
+
+
+    //all the screens
+    bool startscreen();
+    bool levelscreen();
+    bool easyscreen();
+    bool mediumscreen();
+    bool hardscreen();
+    bool winningscreen();
 };
 
