@@ -294,13 +294,13 @@ void Game::run( )
 		//***********************draw the objects here********************
 
 		if(screen == 10){
-    		gTexture = loadTexture("startscreen.png");} //winning screen for level 1
+    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 1
 
 		if(screen == 20){
-    		gTexture = loadTexture("startscreen.png");} //winning screen for level 2
+    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 2
 
 		if(screen == 30){
-    		gTexture = loadTexture("startscreen.png");} //winning screen for level 3
+    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 3
 
 		if(screen==4){
 			
@@ -323,6 +323,12 @@ void Game::run( )
 
 			ff->drawObjects();
 			ff->drawProducts();
+
+			
+			if(ff->collectedProducts()==4){ //player has collected 10 products
+				screen=10;
+			}
+		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
@@ -353,6 +359,12 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+
+			
+			if(ff->collectedProducts()==6){ //player has collected 10 products
+				screen=20;
+			}
+		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
@@ -390,6 +402,12 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+
+			
+			if(ff->collectedProducts()==10){ //player has collected 10 products
+				screen=30;
+			}
+		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
