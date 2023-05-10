@@ -151,6 +151,33 @@ bool Game::easyscreen()
 	return success;
 }
 
+bool Game::mediumscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 7;
+    gTexture = loadTexture("start.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+bool Game::hardscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 9;
+    gTexture = loadTexture("start.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
 
 
 
@@ -229,8 +256,16 @@ void Game::run( )
 					infoscreen();
 				}
 
-				else if((xMouse>=50 && xMouse<=700) && (yMouse>=100 && yMouse<=490) && (screen==3)){
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=146 && yMouse<=240) && (screen==3)){
 					easyscreen();
+				}
+
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=273 && yMouse<=367) && (screen==3)){
+					mediumscreen();
+				}
+
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==3)){
+					hardscreen();
 				}
 
 				SDL_GetMouseState(&xMouse,&yMouse);
@@ -253,8 +288,8 @@ void Game::run( )
 		// farmfrenzyy.drawObjects();
 		// farmfrenzyy.drawProducts();
 		if(screen==4){
-			ff->drawObjects();
-			ff->drawProducts();
+			// ff->drawObjects();
+			// ff->drawProducts();
 			int xMouse, yMouse;
 			SDL_GetMouseState(&xMouse,&yMouse);
 			// ff->createChicken(xMouse, yMouse);
@@ -267,14 +302,55 @@ void Game::run( )
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
+				// ff->drawObjects();
+				// ff->drawProducts();
 				ff->createChicken(xMouse, yMouse);
 				ff->createPig(xMouse, yMouse);
-				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
-				ff->removeProduct(x, y);
+				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
+				ff->removeProduct(xMouse, yMouse);
 			}
 
+			ff->drawObjects();
+			ff->drawProducts();
+		}
 
 
+		
+		if(screen == 7) {
+			
+			ff->drawObjects();
+			ff->drawProducts();
+			int xMouse, yMouse;
+			SDL_GetMouseState(&xMouse,&yMouse);
+		
+			
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				ff->createChicken(xMouse, yMouse);
+				ff->createPig(xMouse, yMouse);
+				ff->createSheep(xMouse, yMouse);
+				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
+				ff->removeProduct(xMouse, yMouse);
+			}
+		}
+
+
+
+		if(screen == 9) {
+			
+			ff->drawObjects();
+			ff->drawProducts();
+			int xMouse, yMouse;
+			SDL_GetMouseState(&xMouse,&yMouse);
+		
+			
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				ff->createChicken(xMouse, yMouse);
+				ff->createPig(xMouse, yMouse);
+				ff->createCow(xMouse, yMouse);
+				ff->createSheep(xMouse, yMouse);
+				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
+				ff->removeProduct(xMouse, yMouse);
+			}
 		}
 
 		// if (e.type == SDL_MOUSEBUTTONDOWN) {
