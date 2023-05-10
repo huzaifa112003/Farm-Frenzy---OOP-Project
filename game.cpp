@@ -161,6 +161,7 @@ bool Game::easyscreen()
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
+
 	
 
 	return success;
@@ -332,16 +333,16 @@ void Game::run( )
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 185 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
 
 		
 		if(screen == 7) {
-			
+			//ff->money=200;
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
@@ -360,7 +361,9 @@ void Game::run( )
 				ff->removeProduct(xMouse, yMouse);
 			}
 
-			
+			ff->drawObjects();
+			ff->drawProducts();
+
 			if(ff->collectedProducts()==6){ //player has collected 10 products
 				screen=20;
 			}
@@ -368,16 +371,15 @@ void Game::run( )
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 115 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
 
 
 		if(screen == 9) {
-			
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
@@ -403,7 +405,9 @@ void Game::run( )
 				ff->removeProduct(xMouse, yMouse);
 			}
 
-			
+			ff->drawObjects();
+			ff->drawProducts();
+
 			if(ff->collectedProducts()==10){ //player has collected 10 products
 				screen=30;
 			}
@@ -411,9 +415,9 @@ void Game::run( )
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 95 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
