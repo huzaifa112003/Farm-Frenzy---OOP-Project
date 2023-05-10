@@ -11,6 +11,9 @@ meat::meat(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
     srcRect={131,1545,128,75};
     moverRect = {x, y, 30, 40}; // egg drawn at x,y coordinates
 }
+char meat::type(){
+    return 'g';
+}
 int meat::getX() const {
     return moverRect.x; //returns meat's x position.
 }

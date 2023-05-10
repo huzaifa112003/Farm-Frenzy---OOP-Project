@@ -10,6 +10,10 @@ wool::wool(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
     srcRect={350,1554,112,83};
     moverRect = {x, y, 30, 40}; // wool drawn at x,y coordinates
 }
+
+char wool::type(){
+    return 'w';
+}
 int wool::getX() const {
     return moverRect.x;
 }

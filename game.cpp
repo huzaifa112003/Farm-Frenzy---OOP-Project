@@ -307,11 +307,19 @@ void Game::run( )
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
-				ff->createChicken(x, y);
-				ff->createPig(x, y);
+				if(ff->money>=100){
+					ff->createChicken(x, y);
+					cout<<"current money is "<<ff->currentMoney()<<endl;}
+				if(ff->money>=200){
+					ff->createPig(x, y);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
 				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 				ff->removeProduct(x, y);
+				cout<<"current money is "<<ff->currentMoney()<<endl;
 			}
+
+			
 
 			ff->drawObjects();
 			ff->drawProducts();
@@ -324,9 +332,17 @@ void Game::run( )
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				ff->createChicken(xMouse, yMouse);
-				ff->createPig(xMouse, yMouse);
-				ff->createSheep(xMouse, yMouse);
+				if(ff->money>=100){
+					ff->createChicken(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;}
+				if(ff->money>=200){
+					ff->createPig(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
+				if(ff->money>=150){
+					ff->createSheep(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
@@ -340,10 +356,23 @@ void Game::run( )
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				ff->createChicken(xMouse, yMouse);
-				ff->createPig(xMouse, yMouse);
-				ff->createCow(xMouse, yMouse);
-				ff->createSheep(xMouse, yMouse);
+				if(ff->money>=100){
+					ff->createChicken(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;}
+				if(ff->money>=200){
+					ff->createPig(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
+				if(ff->money>=300){
+					ff->createCow(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
+				if(ff->money>=150){
+					ff->createSheep(xMouse, yMouse);
+					cout<<"current money is "<<ff->currentMoney()<<endl;
+				}
+
+
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}

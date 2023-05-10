@@ -1,4 +1,5 @@
 #include "egg.hpp"
+#include <chrono>
 
 void egg::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
     //drawing the egg using grenderer, asset file, adress of srcrect, and the adress of its moverrect.
@@ -11,6 +12,10 @@ egg::egg(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
     
     srcRect={22,1558,89,107};
     moverRect = {x, y, 20, 30}; // egg drawn at x,y coordinates
+}
+
+char egg::type(){
+    return 'e';
 }
 int egg::getX() const {
     return moverRect.x; //returns x coordinate of egg.

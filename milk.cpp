@@ -13,6 +13,9 @@ milk::milk(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
     //srcRect = {0, 2, 218, 212};
     moverRect = {x, y, 30, 40}; // egg drawn at x,y coordinates
 }
+char milk::type(){
+    return 'm';
+}
 int milk::getX() const {
     return moverRect.x;
 }

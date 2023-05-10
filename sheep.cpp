@@ -70,8 +70,7 @@ void sheep :: move(){
 const int SCREEN_HEIGHT = 600;
 
 food* sheep::createProduct(SDL_Renderer* rend, SDL_Texture* texture){
-    
-    return new wool(rend, texture,moverRect.x,moverRect.y);
+    return  new wool(rend, texture,moverRect.x,moverRect.y);
 }
 
 

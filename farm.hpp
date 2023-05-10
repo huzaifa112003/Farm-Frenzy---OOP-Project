@@ -32,5 +32,7 @@ class farmfrenzy{
     void drawProducts();
     void removeProduct(int x, int y);
     int collectedProducts();
+    int money=100;
+    int currentMoney();
 
 };

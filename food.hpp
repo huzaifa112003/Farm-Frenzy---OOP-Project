@@ -11,4 +11,5 @@ public:
     virtual int getY() const=0;
     virtual int getWidth() const=0;
     virtual int getHeight() const=0;
+    virtual char type() =0;
 };

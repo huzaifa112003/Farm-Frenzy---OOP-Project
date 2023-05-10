@@ -14,5 +14,6 @@ public:
     int getY() const;
     int getWidth() const;
     int getHeight() const;
+    char type();
     };
 #endif

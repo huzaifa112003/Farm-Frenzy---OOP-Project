@@ -14,5 +14,6 @@ public:
     int getY() const; //getter function for y coordinate of egg.
     int getWidth() const; //getter function for width of egg.
     int getHeight() const; //getter function for height of egg.
+    char type();
     };
 #endif

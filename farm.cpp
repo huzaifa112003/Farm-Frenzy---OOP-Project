@@ -4,6 +4,9 @@
 #include <thread>
 
 int lastProductTime = 0;
+int  farmfrenzy::currentMoney(){
+    return money;
+}
 
 void farmfrenzy::drawObjects(){
     
@@ -22,15 +25,17 @@ void farmfrenzy::drawObjects(){
         }
     }
 }
+
+
+
 void farmfrenzy::createChicken(int x, int y){
     if((x>=0 && x<=46) && (y>=0 && y<=52)){ //when the player buys a chicken
-        int xx= 152+ rand()%630;
-        x=xx;
-        int yy= 124+ rand()%300;
-        y=yy;
+        x= 152+ rand()%630;
+        y= 124+ rand()%300;
         if((y>125 && y<450) && (x>142 && x<812)){
             Animal *murghi = new chicken(gRenderer, assets, x, y); // chicken is drawn. Thus animal vector assigned to the structure object.
             animals.push_back(murghi); // pushed back into vector 
+            money-=100;
         }  
         std::cout<<"Chicken created at: "<<x<<" -- "<<y<<std::endl;
     }
@@ -44,6 +49,7 @@ void farmfrenzy::createPig(int x, int y){
         if((y>125 && y<450) && (x>142 && x<812)){
             Animal *piggy = new Pig(gRenderer, assets, x, y); // pig is drawn. Thus animal vector assigned to the structure object.
             animals.push_back(piggy); // pushed back into vector 
+            money-=200;
         }  
         std::cout<<"Pig created at: "<<x<<" -- "<<y<<std::endl;
     }
@@ -58,6 +64,7 @@ void farmfrenzy::createCow(int x, int y){
         if((y>125 && y<450) && (x>142 && x<812)){ // condition that makes sure animals only appear in the farm area.
             Animal* gaye = new cow(gRenderer, assets, x, y); // cow is drawn. Thus animal vector assigned to the structure object.
             animals.push_back(gaye); // pushed back into vector     
+            money-=300;
         }
         std::cout<<"Cow created  at: "<<x<<" -- "<<y<<std::endl;
     }
@@ -73,7 +80,8 @@ void farmfrenzy::createSheep(int x, int y){
         y=yy;
         if((y>125 && y<450) && (x>142 && x<812)){ // condition that makes sure animals only appear in the farm area.
             Animal* sheepu = new sheep(gRenderer, assets, x, y); // sheep is drawn. Thus animal vector assigned to the structure object.
-            animals.push_back(sheepu); // pushed back into vector     
+            animals.push_back(sheepu); // pushed back into vector    
+            money-=150; 
         }
         std::cout<<"Sheep created at: "<<x<<" -- "<<y<<std::endl;
 
@@ -110,11 +118,34 @@ void farmfrenzy::removeProduct(int x, int y){
         // check if the mouse click is inside the product
         if (x >= product_x && x <= product_x + product_w && y >= product_y && y <= product_y + product_h) {
             // remove the product from the vector and delete it from memory
+            
+            if(products[i]->type()=='e'){
+            money+=100;
+            
+            }
+            else if(products[i]->type()=='m'){
+            money+=250;
+           
+            }
+            else if(products[i]->type()=='g'){
+            money+=350;
+            }
+            else if(products[i]->type()=='w'){
+            money+=500;
+            }
             delete products[i];
             products.erase(products.begin() + i);
             countProduct++;
             collectedProducts();
+            
             break; // break out of the loop after removing the product
         }
     }//
 }
+
+
+
+
+
+
+
