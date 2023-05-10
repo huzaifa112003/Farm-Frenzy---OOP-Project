@@ -217,7 +217,7 @@ bool Game::hardinfo()
 	//Loading success flag
 	bool success = true;
 	screen = 8;
-    gTexture = loadTexture("start.png");
+    gTexture = loadTexture("hardinfo.png");
 	if(gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -347,11 +347,11 @@ void Game::run( )
 					mediumscreen();
 				}
 
-				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==8)){
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==3)){
 					hardinfo();
 				}
 
-				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==4)){
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==8)){
 					hardscreen();
 				}
 
