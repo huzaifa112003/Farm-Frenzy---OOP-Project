@@ -295,13 +295,42 @@ void Game::run( )
 		//***********************draw the objects here********************
 
 		if(screen == 10){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 1
+    		gTexture = loadTexture("winningScreen.jpeg"); //winning screen for level 1
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int x, y;
+				SDL_GetMouseState(&x, &y);
+				if((x>336 && x<597) && (y>367 && y<435))
+					screen=15;
+				}
+		}
+		if(screen == 15){
+			gTexture=loadTexture("levelscreen.png");
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int xMouse, yMouse;
+				SDL_GetMouseState(&xMouse, &yMouse);
+			 if((xMouse>=15 && xMouse<=80) && (yMouse>=30 && yMouse<=91) && (screen==1)){
+					infoscreen();
+				}
 
-		if(screen == 20){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 2
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=146 && yMouse<=240) && (screen==3)){
+					easyscreen();
+				}
 
-		if(screen == 30){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 3
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=273 && yMouse<=367) && (screen==3)){
+					mediumscreen();
+				}
+
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==3)){
+					hardscreen();
+				}
+			}
+			} //back to playing another level
+
+		
+		if(screen == 11){
+    		gTexture = loadTexture("winningScreen.jpeg");} //game over screen 
+
+		
 
 		if(screen==4){
 			
@@ -336,7 +365,11 @@ void Game::run( )
 			//cout << "time: " << duration.count() << endl;
 			int t = 185 - duration.count();
 			//cout << "You have " << t << " seconds left\n";
+			if(t==0){
+				screen=11;
+			}
 			show_time(t);
+
 		}
 
 
@@ -365,7 +398,7 @@ void Game::run( )
 			ff->drawProducts();
 
 			if(ff->collectedProducts()==6){ //player has collected 10 products
-				screen=20;
+				screen=10;
 			}
 		
 			auto stop = high_resolution_clock::now();
@@ -374,6 +407,9 @@ void Game::run( )
 			//cout << "time: " << duration.count() << endl;
 			int t = 115 - duration.count();
 			//cout << "You have " << t << " seconds left\n";
+			if(t==0){
+				screen=11;
+			}
 			show_time(t);
 		}
 
@@ -409,7 +445,7 @@ void Game::run( )
 			ff->drawProducts();
 
 			if(ff->collectedProducts()==10){ //player has collected 10 products
-				screen=30;
+				screen=10;
 			}
 		
 			auto stop = high_resolution_clock::now();
@@ -418,6 +454,9 @@ void Game::run( )
 			//cout << "time: " << duration.count() << endl;
 			int t = 95 - duration.count();
 			//cout << "You have " << t << " seconds left\n";
+			if(t==0){
+				screen=11;
+			}
 			show_time(t);
 		}
 
