@@ -49,8 +49,11 @@ public:
     bool infoscreen();
     bool levelscreen();
     bool easyscreen();
+    bool easyinfo();
     bool mediumscreen();
+    bool mediuminfo();
     bool hardscreen();
+    bool hardinfo();
     bool winningscreen();
 };
 

@@ -150,21 +150,49 @@ bool Game::levelscreen()
 	return success;
 }
 
-bool Game::easyscreen()
+
+bool Game::easyinfo()
 {
 	//Loading success flag
 	bool success = true;
 	screen = 4;
+    gTexture = loadTexture("easyinfo.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+bool Game::easyscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 5;
     gTexture = loadTexture("start.png");
 	if(gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
-	
-
 	return success;
 }
+
+bool Game::mediuminfo()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 6;
+    gTexture = loadTexture("mediuminfo.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
 
 bool Game::mediumscreen()
 {
@@ -180,12 +208,42 @@ bool Game::mediumscreen()
 	return success;
 }
 
+
+bool Game::hardinfo()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 8;
+    gTexture = loadTexture("start.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+
 bool Game::hardscreen()
 {
 	//Loading success flag
 	bool success = true;
 	screen = 9;
     gTexture = loadTexture("start.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
+
+bool Game::winningscreen()
+{
+	//Loading success flag
+	bool success = true;
+	screen = 10;
+    gTexture = loadTexture("winningScreen.jpeg");
 	if(gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -271,17 +329,36 @@ void Game::run( )
 				}
 
 				else if((xMouse>=285 && xMouse<=686) && (yMouse>=146 && yMouse<=240) && (screen==3)){
+					easyinfo();
+				}
+
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==4)){
 					easyscreen();
 				}
 
 				else if((xMouse>=285 && xMouse<=686) && (yMouse>=273 && yMouse<=367) && (screen==3)){
+					mediuminfo();
+				}
+
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==6)){
 					mediumscreen();
 				}
 
-				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==3)){
+				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==8)){
+					hardinfo();
+				}
+
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==4)){
 					hardscreen();
 				}
+
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==10)){
+					levelscreen();
+				}
+				
+				
 			}
+
 			if (Mix_PlayingMusic() == 0)
 			{
 				Mix_PlayMusic(gMusic, 2);
@@ -293,16 +370,20 @@ void Game::run( )
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
 
-		if(screen == 10){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 1
+		// if(screen == 10){
+    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 1
 
-		if(screen == 20){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 2
+		// if(screen == 20){
+    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 2
 
-		if(screen == 30){
-    		gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 3
+		// if(screen == 30){
+    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 3
 
-		if(screen==4){
+		// if(screen==10){
+		// 	winningscreen();
+		// }
+
+		if(screen==5){
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
@@ -327,14 +408,15 @@ void Game::run( )
 			
 			if(ff->collectedProducts()==4){ //player has collected 10 products
 				screen=10;
+				winningscreen();
 			}
 		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 185 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
@@ -362,15 +444,16 @@ void Game::run( )
 
 			
 			if(ff->collectedProducts()==6){ //player has collected 10 products
-				screen=20;
+				screen=10;
+				winningscreen();
 			}
 		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 115 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
@@ -405,15 +488,16 @@ void Game::run( )
 
 			
 			if(ff->collectedProducts()==10){ //player has collected 10 products
-				screen=30;
+				screen=10;
+				winningscreen();
 			}
 		
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
 			// time_left = time_left - duration.count();
-			cout << "time: " << duration.count() << endl;
+			//cout << "time: " << duration.count() << endl;
 			int t = 95 - duration.count();
-			cout << "You have " << t << " seconds left\n";
+			//cout << "You have " << t << " seconds left\n";
 			show_time(t);
 		}
 
