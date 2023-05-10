@@ -428,6 +428,8 @@ void Game::run( )
 		
 		if(screen == 7) {
 			//ff->money=200;
+			//farmfrenzy.money = 200;
+			//ff->money = 300;
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);

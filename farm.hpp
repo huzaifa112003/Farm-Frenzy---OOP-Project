@@ -34,5 +34,6 @@ class farmfrenzy{
     int collectedProducts();
     int money=100;
     int currentMoney();
+    friend class Game;
 
 };
