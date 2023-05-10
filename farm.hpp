@@ -31,5 +31,6 @@ class farmfrenzy{
     void createCow(int, int);
     void drawProducts();
     void removeProduct(int x, int y);
+    int collectedProducts();
 
 };

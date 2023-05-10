@@ -93,7 +93,10 @@ void farmfrenzy::drawProducts(){
         products[i]->draw(gRenderer, assets);
     }
 }
-
+int countProduct=0;
+int farmfrenzy::collectedProducts(){
+    return countProduct;
+}
 void farmfrenzy::removeProduct(int x, int y){
     std::cout << "removeProduct called with x = " << x << " and y = " << y << std::endl;
     // iterate over all the products
@@ -109,6 +112,8 @@ void farmfrenzy::removeProduct(int x, int y){
             // remove the product from the vector and delete it from memory
             delete products[i];
             products.erase(products.begin() + i);
+            countProduct++;
+            collectedProducts();
             break; // break out of the loop after removing the product
         }
     }//

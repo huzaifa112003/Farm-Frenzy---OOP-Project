@@ -230,7 +230,6 @@ void Game::run( )
 	bool quit = false;;
 	SDL_Event e;
 
-	//farmfrenzy farmfrenzyy(gRenderer, assets, 100, 100);
 	farmfrenzy *ff = new farmfrenzy(gRenderer, assets, 100, 100); 
 
 	while( !quit )
@@ -267,12 +266,6 @@ void Game::run( )
 				else if((xMouse>=285 && xMouse<=686) && (yMouse>=394 && yMouse<=489) && (screen==3)){
 					hardscreen();
 				}
-
-				SDL_GetMouseState(&xMouse,&yMouse);
-				// ff->createChicken(xMouse, yMouse);
-				// ff->createPig(xMouse, yMouse);
-				// ff->createCow(xMouse, yMouse);
-				// ff->createSheep(xMouse, yMouse);
 			}
 			if (Mix_PlayingMusic() == 0)
 			{
@@ -285,51 +278,52 @@ void Game::run( )
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
 
-		// farmfrenzyy.drawObjects();
-		// farmfrenzyy.drawProducts();
+		if(screen == 10){
+    		gTexture = loadTexture("startscreen.png");} //winning screen for level 1
+
+		if(screen == 20){
+    		gTexture = loadTexture("startscreen.png");} //winning screen for level 2
+
+		if(screen == 30){
+    		gTexture = loadTexture("startscreen.png");} //winning screen for level 3
+
 		if(screen==4){
-			// ff->drawObjects();
-			// ff->drawProducts();
-			int xMouse, yMouse;
-			SDL_GetMouseState(&xMouse,&yMouse);
-			// ff->createChicken(xMouse, yMouse);
-			// ff->createPig(xMouse, yMouse);
-			// ff->drawObjects();
-			// ff->drawProducts();
-			// ff->createCow(xMouse, yMouse);
-			// ff->createSheep(xMouse, yMouse);
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
-				// ff->drawObjects();
-				// ff->drawProducts();
-				ff->createChicken(xMouse, yMouse);
-				ff->createPig(xMouse, yMouse);
-				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
-				ff->removeProduct(xMouse, yMouse);
+				ff->createChicken(x, y);
+				ff->createPig(x, y);
+				std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+				ff->removeProduct(x, y);
 			}
 
 			ff->drawObjects();
 			ff->drawProducts();
+			if(ff->collectedProducts()==4){ //player has collected 4 products
+				screen=10;
+			}
 		}
 
 
 		
 		if(screen == 7) {
 			
-			ff->drawObjects();
-			ff->drawProducts();
-			int xMouse, yMouse;
-			SDL_GetMouseState(&xMouse,&yMouse);
-		
-			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int xMouse, yMouse;
+				SDL_GetMouseState(&xMouse,&yMouse);
 				ff->createChicken(xMouse, yMouse);
 				ff->createPig(xMouse, yMouse);
 				ff->createSheep(xMouse, yMouse);
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
+			}
+
+			ff->drawObjects();
+			ff->drawProducts();
+
+			if(ff->collectedProducts()==6){ //player has collected 6 products
+				screen=20;
 			}
 		}
 
@@ -337,13 +331,10 @@ void Game::run( )
 
 		if(screen == 9) {
 			
-			ff->drawObjects();
-			ff->drawProducts();
-			int xMouse, yMouse;
-			SDL_GetMouseState(&xMouse,&yMouse);
-		
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int xMouse, yMouse;
+				SDL_GetMouseState(&xMouse,&yMouse);
 				ff->createChicken(xMouse, yMouse);
 				ff->createPig(xMouse, yMouse);
 				ff->createCow(xMouse, yMouse);
@@ -351,14 +342,14 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
-		}
+			
+			ff->drawObjects();
+			ff->drawProducts();
 
-		// if (e.type == SDL_MOUSEBUTTONDOWN) {
-		// 	int x, y;
-		// 	SDL_GetMouseState(&x, &y);
-		// 	std::cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
-		// 	ff->removeEgg(x, y);
-		// }
+			if(ff->collectedProducts()==10){ //player has collected 10 products
+				screen=30;
+			}
+		}
 
 		//****************************************************************
     	SDL_RenderPresent(gRenderer); //displays the updated renderer
