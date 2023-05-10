@@ -323,6 +323,13 @@ void Game::run( )
 
 			ff->drawObjects();
 			ff->drawProducts();
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			// time_left = time_left - duration.count();
+			cout << "time: " << duration.count() << endl;
+			int t = 185 - duration.count();
+			cout << "You have " << t << " seconds left\n";
+			show_time(t);
 		}
 
 
@@ -346,6 +353,13 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			// time_left = time_left - duration.count();
+			cout << "time: " << duration.count() << endl;
+			int t = 115 - duration.count();
+			cout << "You have " << t << " seconds left\n";
+			show_time(t);
 		}
 
 
@@ -376,6 +390,13 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			// time_left = time_left - duration.count();
+			cout << "time: " << duration.count() << endl;
+			int t = 95 - duration.count();
+			cout << "You have " << t << " seconds left\n";
+			show_time(t);
 		}
 
 		//****************************************************************
