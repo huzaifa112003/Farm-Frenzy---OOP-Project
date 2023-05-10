@@ -7,10 +7,23 @@
 #include <unistd.h>
 #include <ctime>
 #include<string>
+#include<SDL_ttf.h>
+
+using namespace std;
+using namespace std::chrono;
 
 
 // static int screen;
-
+void Game::show_time(int t){
+	TTF_Init(); //Initializes SDL_TTF for displaying text in 
+    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+    SDL_Color color = {1, 1, 1}; //This is the texts color that can be changed using RGB values from 0 to 255.
+    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
+    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+    SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfacemessage); //Converts into texture that can be displayed
+    SDL_Rect Message_rect = {870, 520, 90, 30}; //create a rect for it
+    SDL_RenderCopy(gRenderer, Message, NULL, &Message_rect);
+    SDL_FreeSurface(surfacemessage);}
 
 bool Game::init()
 {
@@ -148,6 +161,8 @@ bool Game::easyscreen()
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
+	
+
 	return success;
 }
 
@@ -232,7 +247,7 @@ void Game::run( )
 
 	//farmfrenzy farmfrenzyy(gRenderer, assets, 100, 100);
 	farmfrenzy *ff = new farmfrenzy(gRenderer, assets, 100, 100); 
-
+	auto start = high_resolution_clock::now();
 	while( !quit )
 	{
 		//Handle events on queue
@@ -312,6 +327,13 @@ void Game::run( )
 
 			ff->drawObjects();
 			ff->drawProducts();
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			// time_left = time_left - duration.count();
+			cout << "time: " << duration.count() << endl;
+			int t = 185 - duration.count();
+			cout << "You have " << t << " seconds left\n";
+			show_time(t);
 		}
 
 
@@ -331,6 +353,13 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				// time_left = time_left - duration.count();
+				cout << "time: " << duration.count() << endl;
+				int t = 115 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
 		}
 
 
@@ -351,6 +380,13 @@ void Game::run( )
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				// time_left = time_left - duration.count();
+				cout << "time: " << duration.count() << endl;
+				int t = 95 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
 		}
 
 		// if (e.type == SDL_MOUSEBUTTONDOWN) {

@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SDL_mixer.h>
+#include<SDL_ttf.h>
 
 
 
@@ -41,6 +42,7 @@ public:
     SDL_Texture* loadTexture( std::string path );
     void run();
 
+    void show_time(int);
 
     //all the screens
     bool startscreen();
