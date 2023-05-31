@@ -9,7 +9,7 @@ void meat::draw(SDL_Renderer* gRenderer, SDL_Texture* assets){
 meat::meat(SDL_Renderer* rend, SDL_Texture* texture, int x, int y):
   food(rend, texture) { //constructor which also inherits parent class food constructor
     srcRect={131,1545,128,75};
-    moverRect = {x, y, 30, 40}; // egg drawn at x,y coordinates
+    moverRect = {x, y, 30, 40}; // meat drawn at x,y coordinates
 }
 char meat::type(){
     return 'g';

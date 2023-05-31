@@ -28,7 +28,7 @@ void sheep :: move(){
         }
         
         if(moverRect.x<=700){ // if sheep has not reached the right corner x plus 20
-            moverRect.x += 5;
+            moverRect.x += 4;
         }
        
         if (moverRect.x>=700){ // if sheep reached the right end corner flag false and exit the if condition
@@ -58,7 +58,7 @@ void sheep :: move(){
         }  
 
         if(moverRect.x>=135){ // if sheep has not reached the right corner x plus 20
-            moverRect.x -= 5;
+            moverRect.x -= 4;
         }
         if (moverRect.x<=155){ // if sheep reached the right end corner flag false and exit the if condition
             flag = true;

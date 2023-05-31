@@ -12,4 +12,5 @@ public:
     virtual int getWidth() const=0;
     virtual int getHeight() const=0;
     virtual char type() =0;
+    ~food(); //Destructor
 };

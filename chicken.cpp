@@ -9,20 +9,20 @@ void chicken :: move(){
     
     if (flag == true) {
         if (animation == 0) { // if first animation
-            srcRect = {133, 102, 36, 25}; // move right
+            srcRect = {133, 102, 30, 25}; // move right
             animation++; // next animation
         } 
         else if (animation == 1) { // if middle animation 
-            srcRect = {165, 103, 31, 24}; //(shows leg movement of chicken)
+            srcRect = {165, 103, 30, 25}; //(shows leg movement of chicken)
             animation++; // next animation
         }
         else if (animation == 2) { // if second last animation
-            srcRect = {197, 102,30,26}; // move right 
+            srcRect = {197, 102,30,25}; // move right 
             animation++; //increment animation
         } 
 
         else if (animation == 3) { // if last animation
-            srcRect = {229, 103, 31, 25}; // move right 
+            srcRect = {229, 103, 30, 25}; // move right 
             animation = 0; // move back to first animation
         }
         

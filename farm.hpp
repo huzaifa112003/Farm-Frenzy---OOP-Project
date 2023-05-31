@@ -8,6 +8,7 @@
 #include "milk.hpp"
 #include "meat.hpp"
 #include "wool.hpp"
+#include "countp.hpp"
 
 #include<vector>
 
@@ -22,6 +23,7 @@ class farmfrenzy{
     vector<Animal*> animals; 
     vector<food*> products;
     std::chrono::time_point<std::chrono::system_clock> last_product_time;
+    //int countproduct = 0;
     public:
     farmfrenzy(SDL_Renderer *, SDL_Texture *, int, int);
     void drawObjects();                      
@@ -32,8 +34,9 @@ class farmfrenzy{
     void drawProducts();
     void removeProduct(int x, int y);
     int collectedProducts();
-    int money=100;
+    int money = 100;
     int currentMoney();
+    int countProduct=0;
     friend class Game;
-
+    ~farmfrenzy();
 };

@@ -32,7 +32,7 @@ void cow :: move(){
         }
         
         if(moverRect.x<=700){ // if cow has not reached the right corner x plus 20
-            moverRect.x += 5;
+            moverRect.x += 2;
         }
        
         if (moverRect.x>=700){ // if cow reached the right end corner flag false and exit the if condition
@@ -65,7 +65,7 @@ void cow :: move(){
         }  
 
         if(moverRect.x>=135){ // if cow has not reached the right corner x plus 20
-            moverRect.x -= 5;
+            moverRect.x -= 2;
         }
         if (moverRect.x<=155){ // if cow has reached the right end corner flag false and exit the else condition
             flag = true;

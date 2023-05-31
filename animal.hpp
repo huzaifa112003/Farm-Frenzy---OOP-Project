@@ -10,4 +10,5 @@ public:
     virtual void draw(SDL_Renderer*, SDL_Texture* assets) = 0; // A pure virtual draw function that every derived class will have of its own.
     virtual void move() = 0; // A pure virtual move function that every derived class will have of its own.
     virtual food* createProduct(SDL_Renderer* rend, SDL_Texture* texture)=0; // A pure virtual createproduct function that every derived class will have of its own.
+    ~Animal();
 };

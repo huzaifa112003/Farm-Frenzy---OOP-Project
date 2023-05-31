@@ -43,6 +43,8 @@ public:
     void run();
 
     void show_time(int);
+    void show_money(int);
+    void show_products(int);
 
     //all the screens
     bool startscreen();
@@ -55,5 +57,6 @@ public:
     bool hardscreen();
     bool hardinfo();
     bool winningscreen();
+    bool losingscreen();
 };
 

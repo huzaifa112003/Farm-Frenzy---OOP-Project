@@ -21,9 +21,35 @@ void Game::show_time(int t){
     string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
     SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
     SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfacemessage); //Converts into texture that can be displayed
-    SDL_Rect Message_rect = {870, 520, 90, 30}; //create a rect for it
+    SDL_Rect Message_rect = {860, 532, 90, 30}; //create a rect for it
     SDL_RenderCopy(gRenderer, Message, NULL, &Message_rect);
     SDL_FreeSurface(surfacemessage);}
+
+
+void Game::show_money(int t){
+	TTF_Init(); //Initializes SDL_TTF for displaying text in 
+    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+    SDL_Color color = {1, 1, 1}; //This is the texts color that can be changed using RGB values from 0 to 255.
+    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
+    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+    SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfacemessage); //Converts into texture that can be displayed
+    SDL_Rect Message_rect = {26, 555, 60, 30}; //create a rect for it
+    SDL_RenderCopy(gRenderer, Message, NULL, &Message_rect);
+    SDL_FreeSurface(surfacemessage);}
+
+
+void Game::show_products(int t){
+	TTF_Init(); //Initializes SDL_TTF for displaying text in 
+    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+    SDL_Color color = {1, 1, 1}; //This is the texts color that can be changed using RGB values from 0 to 255.
+    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
+    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+    SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfacemessage); //Converts into texture that can be displayed
+    SDL_Rect Message_rect = {887, 54, 34, 24}; //create a rect for it
+    SDL_RenderCopy(gRenderer, Message, NULL, &Message_rect);
+    SDL_FreeSurface(surfacemessage);}
+
+
 
 bool Game::init()
 {
@@ -85,7 +111,8 @@ bool Game::init()
 	return success;
 }
 
-bool Game::loadMedia()
+
+bool Game::loadMedia() //loads all the media
 {
 	//Loading success flag
 	bool success = true;
@@ -108,7 +135,8 @@ bool Game::loadMedia()
 	return success;
 }
 
-bool Game::startscreen()
+
+bool Game::startscreen() //start screen of the game
 {
 	//Loading success flag
 	bool success = true;
@@ -122,7 +150,8 @@ bool Game::startscreen()
 	return success;
 }
 
-bool Game::infoscreen()
+
+bool Game::infoscreen() //information screen of game
 {
 	//Loading success flag
 	bool success = true;
@@ -136,7 +165,8 @@ bool Game::infoscreen()
 	return success;
 }
 
-bool Game::levelscreen()
+
+bool Game::levelscreen() // levels screen of game 
 {
 	//Loading success flag
 	bool success = true;
@@ -151,7 +181,7 @@ bool Game::levelscreen()
 }
 
 
-bool Game::easyinfo()
+bool Game::easyinfo() //instructions  for easy level
 {
 	//Loading success flag
 	bool success = true;
@@ -165,7 +195,8 @@ bool Game::easyinfo()
 	return success;
 }
 
-bool Game::easyscreen()
+
+bool Game::easyscreen() //easy level start
 {
 	//Loading success flag
 	bool success = true;
@@ -176,13 +207,11 @@ bool Game::easyscreen()
         printf("Unable to run due to error: %s\n",SDL_GetError());
         success =false;
     }
-
-	
-
 	return success;
 }
 
-bool Game::mediuminfo()
+
+bool Game::mediuminfo()  // instructions for medium level
 {
 	//Loading success flag
 	bool success = true;
@@ -197,7 +226,7 @@ bool Game::mediuminfo()
 }
 
 
-bool Game::mediumscreen()
+bool Game::mediumscreen() // medium level start
 {
 	//Loading success flag
 	bool success = true;
@@ -212,7 +241,7 @@ bool Game::mediumscreen()
 }
 
 
-bool Game::hardinfo()
+bool Game::hardinfo() // instructions for hard level
 {
 	//Loading success flag
 	bool success = true;
@@ -227,7 +256,7 @@ bool Game::hardinfo()
 }
 
 
-bool Game::hardscreen()
+bool Game::hardscreen() //hard level start
 {
 	//Loading success flag
 	bool success = true;
@@ -241,7 +270,8 @@ bool Game::hardscreen()
 	return success;
 }
 
-bool Game::winningscreen()
+
+bool Game::winningscreen() // when the player wins the game
 {
 	//Loading success flag
 	bool success = true;
@@ -256,9 +286,22 @@ bool Game::winningscreen()
 }
 
 
+bool Game::losingscreen() // when the player loses the game
+{
+	//Loading success flag
+	bool success = true;
+	screen = 11;
+    gTexture = loadTexture("gameover.png");
+	if(gTexture==NULL)
+    {
+        printf("Unable to run due to error: %s\n",SDL_GetError());
+        success =false;
+    }
+	return success;
+}
 
 
-void Game::close()
+void Game::close() //closing game
 {
 	//Free loaded images
 	SDL_DestroyTexture(assets);
@@ -274,6 +317,7 @@ void Game::close()
 	IMG_Quit();
 	SDL_Quit();
 }
+
 
 SDL_Texture* Game::loadTexture( std::string path )
 {
@@ -301,13 +345,15 @@ SDL_Texture* Game::loadTexture( std::string path )
 
 	return newTexture;
 }
-void Game::run( )
+
+
+void Game::run( ) // main game running
 {
 	bool quit = false;;
 	SDL_Event e;
 
-	farmfrenzy *ff = new farmfrenzy(gRenderer, assets, 100, 100); 
-	auto start = high_resolution_clock::now();
+	farmfrenzy *ff = new farmfrenzy(gRenderer, assets, 100, 100); //poiinter  of farmfrenzy
+	auto start = high_resolution_clock::now(); // for clock
 	while( !quit )
 	{
 		//Handle events on queue
@@ -319,8 +365,8 @@ void Game::run( )
 				quit = true;
 			}
 
-			if(e.type == SDL_MOUSEBUTTONDOWN){
-			//this is a good location to add pigeon in linked list.
+			if(e.type == SDL_MOUSEBUTTONDOWN){ // below are all the conditions for switching screen 
+
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
 				if((xMouse>=298 && xMouse<=700) && (yMouse>=396 && yMouse<=490) && (screen==1)){
@@ -329,6 +375,10 @@ void Game::run( )
 
 				else if((xMouse>=15 && xMouse<=80) && (yMouse>=30 && yMouse<=91) && (screen==1)){
 					infoscreen();
+				}
+
+				else if((xMouse>=21 && xMouse<=122) && (yMouse>=15 && yMouse<=117) && (screen==2)){
+					startscreen();
 				}
 
 				else if((xMouse>=285 && xMouse<=686) && (yMouse>=146 && yMouse<=240) && (screen==3)){
@@ -356,13 +406,17 @@ void Game::run( )
 				}
 
 				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==10)){
+					ff->countProduct = 0;
 					levelscreen();
 				}
-				
-				
+
+				else if((xMouse>=50 && xMouse<=1000) && (yMouse>=10 && yMouse<=600) && (screen==11)){
+					ff->countProduct = 0;
+					levelscreen();
+				}
 			}
 
-			if (Mix_PlayingMusic() == 0)
+			if (Mix_PlayingMusic() == 0) //condition for music 
 			{
 				Mix_PlayMusic(gMusic, 2);
 			}
@@ -371,22 +425,16 @@ void Game::run( )
 
 		SDL_RenderClear(gRenderer); //removes everything from renderer
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);//Draws background to renderer
+
+
+
 		//***********************draw the objects here********************
 
-		// if(screen == 10){
-    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 1
 
-		// if(screen == 20){
-    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 2
 
-		// if(screen == 30){
-    	// 	gTexture = loadTexture("winningScreen.jpeg");} //winning screen for level 3
+// If conditions for all the different levels below
 
-		// if(screen==10){
-		// 	winningscreen();
-		// }
-
-		if(screen==5){
+		if(screen==5){ // Easy Level
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
@@ -403,33 +451,36 @@ void Game::run( )
 				cout<<"current money is "<<ff->currentMoney()<<endl;
 			}
 
-			
-
 			ff->drawObjects();
 			ff->drawProducts();
 
 			
-			if(ff->collectedProducts()==4){ //player has collected 10 products
+			if(ff->collectedProducts()==6){ //player has collected 6 products
 				screen=10;
 				winningscreen();
 			}
-		
+
+			int money=ff->currentMoney();
+			int products=ff->collectedProducts();
+			show_money(money);
+			show_products(products);
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
-			// time_left = time_left - duration.count();
-			//cout << "time: " << duration.count() << endl;
-			int t = 185 - duration.count();
-			//cout << "You have " << t << " seconds left\n";
+			int t = 195 - duration.count(); //time allocated per level
 			show_time(t);
+
+			if (t<=0){ //losing condition
+				screen = 11;
+				losingscreen();
+			}
 
 		}
 
 
 		
-		if(screen == 7) {
-			//ff->money=200;
-			//farmfrenzy.money = 200;
-			//ff->money = 300;
+
+		if(screen == 7) { // Medium Level
+
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
@@ -451,23 +502,31 @@ void Game::run( )
 			ff->drawObjects();
 			ff->drawProducts();
 
-			if(ff->collectedProducts()==6){ //player has collected 10 products
+			if(ff->collectedProducts()==8){ //player has collected 8 products
 				screen=10;
 				winningscreen();
 			}
-		
+
+			int money=ff->currentMoney();
+			int products=ff->collectedProducts();
+			show_money(money);
+			show_products(products);
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
-			// time_left = time_left - duration.count();
-			//cout << "time: " << duration.count() << endl;
-			int t = 115 - duration.count();
-			//cout << "You have " << t << " seconds left\n";
+			int t = 125 - duration.count(); //time allocated per level
 			show_time(t);
+
+			if (t<=0){ //losing condition
+				screen = 11;
+				losingscreen();
+			}
 		}
 
 
 
-		if(screen == 9) {
+
+
+		if(screen == 9) { // Hard Level
 			
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int xMouse, yMouse;
@@ -488,7 +547,6 @@ void Game::run( )
 					cout<<"current money is "<<ff->currentMoney()<<endl;
 				}
 
-
 				std::cout << "Mouse clicked at: " << xMouse << " -- " << yMouse << std::endl;
 				ff->removeProduct(xMouse, yMouse);
 			}
@@ -500,20 +558,30 @@ void Game::run( )
 				screen=10;
 				winningscreen();
 			}
-		
+
+			int money=ff->currentMoney();
+			int products=ff->collectedProducts();
+			show_money(money);
+			show_products(products);
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<seconds>(stop - start);
-			// time_left = time_left - duration.count();
-			//cout << "time: " << duration.count() << endl;
-			int t = 95 - duration.count();
-			//cout << "You have " << t << " seconds left\n";
+			int t = 95 - duration.count(); //time allocated per level
 			show_time(t);
+
+			if (t<=0){ //losing condition
+				screen = 11;
+				losingscreen();
+			}
 		}
+
 
 		//****************************************************************
     	SDL_RenderPresent(gRenderer); //displays the updated renderer
 
 	    SDL_Delay(100);	//causes sdl engine to delay for specified miliseconds
 	}
-			
+
+	ff->~farmfrenzy();
+	delete ff;	
+	ff = nullptr;
 }
